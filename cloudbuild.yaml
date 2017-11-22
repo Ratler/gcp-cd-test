@@ -3,6 +3,6 @@ steps:
     args: ["install", "github.com/Ratler/gcp-cd-test"]
     env: ["PROJECT_ROOT=github.com/Ratler/gcp-cd-test"]
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/www-magento}/gcp-cd-codelab:$REVISION_ID", "-f", "Dockerfile", "."]
+    args: ["build", "-t", "gcr.io/www-magento/gcp-cd-test:$REVISION_ID", "-f", "Dockerfile", "."]
 images:
-  - "gcr.io/www-magento/gcp-cd-codelab:$REVISION_ID"
+  - "gcr.io/www-magento/gcp-cd-test:$REVISION_ID"
