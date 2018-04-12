@@ -25,7 +25,7 @@ elif [ "$1" = "buildgo" ]; then
   cd $GOPATH
   ls -l dist/
 elif [ "$1" = "build" ]; then
-  docker run --rm -v $PWD:/go/gcp-cd-tes golang:1.7.1 bash /go/gcp-cd-test/run.sh buildgo
+  docker run --rm -v $PWD:/go/gcp-cd-test golang:1.7.1 bash /go/gcp-cd-test/run.sh buildgo
   cd dist
   docker build . -t gcp-cd-test:latest
 else
