@@ -26,7 +26,7 @@ elif [ "$1" = "buildgo" ]; then
   go build -o $GOPATH/gcp-cd-test/dist/gcp-cd-test ./main.go
   cp Dockerfile $GOPATH/gcp-cd-test/dist/Dockerfile
   cd $GOPATH
-  ls -l dist/
+  ls -l gcp-cd-test/dist/
 elif [ "$1" = "build" ]; then
   docker run --rm -v $PWD:/go/gcp-cd-test golang:1.7.1 bash /go/gcp-cd-test/run.sh buildgo
   cd dist
