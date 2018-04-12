@@ -15,5 +15,5 @@ if [ "$1" = "test" ]; then
   go test -cover ./... | tee test_coverage.txt
   mv test_coverage.txt $GOPATH/coverage-results/
 else
-  docker run --rm -t -v $PWD:/data golang:1.7.1 bash /data/run-tests.sh test
+  docker run --rm -t -v $PWD:/go/gcp-cd-test golang:1.7.1 bash /go/gcp-cd-test/run-tests.sh test
 fi
