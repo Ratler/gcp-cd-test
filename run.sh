@@ -13,7 +13,6 @@ if [ "$1" = "test" ]; then
   cd src/github.com/Ratler/gcp-cd-test
   ls -l
   go test -cover ./... | tee test_coverage.txt
-  cp test_coverage.txt $GOPATH/gcp-cd-test
 elif [ "$1" = "buildgo" ]; then
   export GOPATH=$PWD
   mkdir -p src/github.com/Ratler $PWD/dist
