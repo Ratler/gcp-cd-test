@@ -15,13 +15,16 @@ if [ "$1" = "test" ]; then
   go test -cover ./... | tee test_coverage.txt
 elif [ "$1" = "buildgo" ]; then
   export GOPATH=$PWD
-  mkdir -p src/github.com/Ratler $PWD/dist
+  if [ -d "$GOPATH/gcp-cd-test/dist "]; then
+    rm -rf $GOPATH/gcp-cd-test/dist
+  fi
+  mkdir -p src/github.com/Ratler $GOPATH/gcp-cd-test/dist
   ln -sf $PWD/gcp-cd-test src/github.com/Ratler/gcp-cd-test
   echo "Gopath is: " $GOPATH
   echo "pwd is: " $PWD
   cd src/github.com/Ratler/gcp-cd-test
-  go build -o $GOPATH/dist/gcp-cd-test ./main.go
-  cp Dockerfile $GOPATH/dist/Dockerfile
+  go build -o $GOPATH/gcp-cd-test/dist/gcp-cd-test ./main.go
+  cp Dockerfile $GOPATH/gcp-cd-test/dist/Dockerfile
   cd $GOPATH
   ls -l dist/
 elif [ "$1" = "build" ]; then
