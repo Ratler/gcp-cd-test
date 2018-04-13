@@ -35,6 +35,7 @@ elif [ "$1" = "build" ]; then
 elif [ "$1" = "push"]; then
   eval $(aws ecr get-login --region $AWS_REGION)
   docker tag gcp-cd-test:latest ${DOCKER_REGISTRY}:${GO_REVISION}
+  echo "Pushing ${DOCKER_REGISTRY}:${GO_REVISION}"
   docker push ${DOCKER_REGISTRY}:${GO_REVISION}
 else
   docker run --rm -t -v $PWD:/go/gcp-cd-test golang:1.7.1 bash /go/gcp-cd-test/run.sh test
