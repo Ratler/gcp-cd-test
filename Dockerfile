@@ -1,6 +1,7 @@
 FROM golang:1.9 as builder
 RUN go get -d -v github.com/Ratler/gcp-cd-test
 WORKDIR /go/src/github.com/Ratler/gcp-cd-test
+RUN golint -set_exit_status
 RUN go test -cover ./...
 RUN go build -a -o gcp-cd-test .
 
