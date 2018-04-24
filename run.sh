@@ -33,7 +33,7 @@ elif [ "$1" = "build" ]; then
   cd dist
   docker build . -t gcp-cd-test:latest
 elif [ "$1" = "push" ]; then
-  eval $(aws ecr get-login --region $AWS_REGION)
+  eval $(aws ecr get-login --no-include-email --region $AWS_REGION)
   docker tag gcp-cd-test:latest ${DOCKER_REGISTRY}:${GO_REVISION}
   echo "Pushing ${DOCKER_REGISTRY}:${GO_REVISION}"
   docker push ${DOCKER_REGISTRY}:${GO_REVISION}
