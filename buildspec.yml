@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  pre_build:
+    - echo Signing into ECR...
+    - $(aws ecr get-login --no-include-email --region us-east-1)
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the docker image...
+      - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing docker image to $IMAGE_REPO_NAME
+      - docker push $IMAGE_REPO_NAME:$IMAGE_TAG
