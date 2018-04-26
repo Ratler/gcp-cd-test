@@ -6,7 +6,7 @@ import (
 )
 
 func hello(w http.ResponseWriter, r *http.Request) {
-	io.WriteString(w, "This is production worthy, running v1.6")
+	io.WriteString(w, "This is production worthy, running v1.7")
 }
 
 func healthcheck(w http.ResponseWriter, r *http.Request) {
